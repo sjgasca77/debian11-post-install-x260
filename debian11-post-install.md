@@ -4,4 +4,39 @@ Después de instalar Debian 11, version netinst [Debian 11 netinst](https://cdim
 
 ## 1. Agregar permisos administrador (sudo) a usuario normal.
 
+Abrir el terminal y validarse como root
+
+```bash
+su
+```
+
+Agregar al usuario como usuario administrador
+
+```bash
+/sbin/usermod -aG sudo usuario
+```
+
+Cierra sesión o reinicia para que los cambios sean efectivos
+
+## 2. Actualizar el sistema
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+## 3. Instalar firmware Wifi (obligatorio para Lenovo X260)
+
+Los drivers para tarjeta Wifi no son de código abierto, por lo que debian no la reconoce automáticamente. Hay que habilitar el repositorio non-free e instalarlos.
+
+
+
+## 4. Desinstalar juegos preinstalados
+
+
+
+## 5. Instalar programa retoques (gnome-tweak-tools)
+
+
+
+## 6. Instalar gnome-extensions
 
