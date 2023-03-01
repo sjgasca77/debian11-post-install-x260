@@ -116,7 +116,25 @@ Ir a https://extensions.gnome.org mediante el navegador Firefox e instalar exten
 
 [Top 20 Gnome Extensions](https://itsfoss.com/best-gnome-extensions/)
 
-## 7. Instalar tlp (sólo para portátiles)
+## 8. Ajustes 
+
+Dentro de ajustes Ir a los siguientes ajustes: 
+
+### 8.1 Activar el modo noche
+
+Dentro de ajustes Ir a pantallas -> Luz noctura -> Luz nocturna. 
+
+Podemos mantener los ajustes estandar para que la luz nocturna se active desde el atardecer hasta el amanecer.
+
+### 8.2 Mostrar porcentaje bateria
+
+Dentro de ajustes Ir a Energía -> Mostrar porcentaje batería.
+
+### 8.3 Cambiar fondo de pantalla
+
+Fondo
+
+## 9. Instalar tlp (sólo para portátiles)
 
 Tlp permite optimizar el uso de bateria en los portátiles. Para instalarlo.
 
@@ -134,17 +152,28 @@ NOTA para X260. Al suspender el equipo no es posible restaurarlo de nuevo. Para 
 
 * Agregar la opción "intel_iommu=off" a los parámetros de GRUB [Reddit](https://www.reddit.com/r/thinkpad/comments/73i20g/x260_with_archi3wmtlp_will_not_wake_from_suspend/)
 
-## 8. Eliminar tiempo de espera GRUB
+## 10. Eliminar tiempo de espera GRUB
 
 Al iniciar Debian, nos aparece el menú de GRUB para indicar el sistema operativo a arrancar. Si solo tenemos Linux, podemos agilizar un poco el tiempo de carga y eliminar esta espera. 
 
-Para ello, editamos el archivo 
+Para ello, editamos el siguiente archivo:
 
-## 9. Instalar sowftware básico
+```bash
+sudo nano /etc/default/grub
+```
+y Modificamos el parámetro GRUB_TIMEOUT
 
-### 9.1. Habilitar soporte Flatpak o Snap
+```bash
+GRUB_TIMEOUT=0
+```
 
-### 9.2. Aplicaciones varias.
+Si queremos acceder nuevamente al menú de GRUB, podemos pulsar la tecla SHIFT durante el inicio.
+
+## 11. Instalar sowftware básico
+
+### 11.1. Habilitar soporte Flatpak o Snap
+
+### 11.2. Aplicaciones varias.
 Virtualbox
 VLC
 Telegram
