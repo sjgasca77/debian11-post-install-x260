@@ -102,16 +102,51 @@ Hay bastantes ajustes interesantes que podemos llevar a cabo con esta herramient
 
 ## 6. Instalar gnome-extensions
 
-Ir a https://extensions.gnome.org mediante el navegador Firefox e instalar extensión en en el navegador. Habilitar las siguientes extensiones:
+Ir a https://extensions.gnome.org mediante el navegador Firefox e instalar extensión en en el navegador. Hay muchas extensiones, pero no tantas útiles. Habilitar las siguientes extensiones:
 
-Dash to dock
+* [Dash to dock](https://extensions.gnome.org/extension/307/dash-to-dock/). Por defecto el dash (barra lateral que aparece al pulsar sobre Actividades) no se mantiene en pantalla, al estilo Ubuntu. Para dejarlo fijo puedes instalar esta extensión o Dash to panel para un look más parecido a Windows/Mac.
 
-## 7. Instalar tlp
+* [Applications Menu](https://extensions.gnome.org/extension/6/applications-menu/). Añade un menú en la barra superior del escritorio con todos los programas ordenados por categorías.
 
+* [Places Status Indicator](https://extensions.gnome.org/extension/8/places-status-indicator/). Añade un menú en la barra superior del escritorio con accesos a las areas más importantes del equipo (Home, Escritorio, Musica, Redes, etc.)
+
+* [GS Connect](https://extensions.gnome.org/extension/1319/gsconnect/). Permite integrar el móvil y el escritorio de una forma rápida. Debemos instalarnos la aplicacion [KDE Connect](https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp) pero me parece una de las más útiles. Enviar archivos desde/hacia el móvil, ver las llamadas y mensajes de texto, etc.
+
+* [WinTile](https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/). Permite ajustar las ventanas en cada una de las mitades del escritorio. Muy útil para tener dos ventanas a la vista y es una funcionalidad de Windows que siempre echaba de menos. 
+
+[Top 20 Gnome Extensions](https://itsfoss.com/best-gnome-extensions/)
+
+## 7. Instalar tlp (sólo para portátiles)
+
+Tlp permite optimizar el uso de bateria en los portátiles. Para instalarlo.
+
+```bash
+sudo apt install tlp tlp-rdw
+```
+
+El paquete tlp-rdw también está recomendado pues permite a TLP encender/apagar los dispositivos Wifi, Bluetooth y WWAN (Wireless Wan).
+
+La documentación es muy completa y se puede consultar en [TLP - Optimize Linux Laptop](https://linrunner.de/tlp/index.html)
+
+NOTA para X260. Al suspender el equipo no es posible restaurarlo de nuevo. Para ello tenemos dos opciones: 
+
+* Deshabilitar la opción en la BIOS del sistema. Para ello debemos ir al menu --> Security Chip y establecer en Disable.
+
+* Agregar la opción "intel_iommu=off" a los parámetros de GRUB [Reddit](https://www.reddit.com/r/thinkpad/comments/73i20g/x260_with_archi3wmtlp_will_not_wake_from_suspend/)
 
 ## 8. Eliminar tiempo de espera GRUB
 
+Al iniciar Debian, nos aparece el menú de GRUB para indicar el sistema operativo a arrancar. Si solo tenemos Linux, podemos agilizar un poco el tiempo de carga y eliminar esta espera. 
+
+Para ello, editamos el archivo 
 
 ## 9. Instalar sowftware básico
 
+### 9.1. Habilitar soporte Flatpak o Snap
+
+### 9.2. Aplicaciones varias.
+Virtualbox
 VLC
+Telegram
+Spotify 
+Visual Studio
