@@ -194,9 +194,11 @@ Si queremos acceder nuevamente al menú de GRUB, podemos pulsar la tecla SHIFT d
 
 ### 11.1. Habilitar soporte Flatpak o Snap
 
+```
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```bash 
 
 ### 11.2. Aplicaciones varias.
 Virtualbox
