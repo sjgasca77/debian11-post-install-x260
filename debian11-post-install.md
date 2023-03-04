@@ -24,7 +24,7 @@ Cierra sesión o reinicia para que los cambios sean efectivos
 sudo apt update && sudo apt upgrade
 ```
 
-## 3. Instalar firmware Wifi (sólo para Lenovo X260)
+## 3. Instalar firmware Wifi (sólo Lenovo X260)
 
 Los drivers para tarjeta Wifi no son de código abierto, por lo que Debian no la reconoce automáticamente. Hay que habilitar el repositorio non-free e instalarlos.
 
@@ -48,7 +48,28 @@ sudo apt update
 sudo apt install firmware-iwlwifi
 ```
 
-## 4. Desinstalar juegos preinstalados
+## 4. Habilitar lector huellas dactilares (sólo Lenovo X260)
+
+El soporte de drivers es muy bueno para el Lenovo X260 (ver [wiki Gentoo](https://wiki.gentoo.org/wiki/Lenovo_ThinkPad_X260)) pero para que Debian reconozca el lector de huellas tenemos que instalar la libreria [libprint](https://github.com/freedesktop/libfprint). Los paquetes para Debian por suerte ya estan disponibles y para ello solo debemos instalar los siguientes paquetes:
+
+```bash
+sudo apt install libfprint-2-2 fprintd libpam-fprintd 
+```
+* libfprint-2-2: libreria para el proyecto fprint 
+* fprintd Demonio para el lector de huellas dactilares. Este paquete nos permite ir a Configuración -> Usuarios y ver la opción "Inicio de sesión con huella".
+* libpam-fprintd Permite la autenticación mediante huella en el inicio de sesión.
+
+Después de agregar nuestra huella y reiniciar sesión, ya podremos iniciar sesión con la huella. Si queremos que el comando sudo también nos reconozca la huella, debemos añadir la siguiente linea al siguiente archivo de configuración PAM.
+
+```bash
+sudo nano /etc/pam.d/sudo
+
+auth required pam_fprintd.so
+#@include common-auth
+```
+NOTA: si no comentamos la segunda linea, nos pedida la huella y además el password de usuario.
+
+## 5. Desinstalar juegos preinstalados
 
 Debian 11 viene por defecto con un montón de juegos (19) preinstalados. ¿Porque Debian (o mejor dicho Gnome) viene con tantos juegos preinstalados? Quien sabe, pero yo prefiero desinstalarlos todos y luego instalar aquel que vaya a utilizar. Los juegos que se van a desinstalar son los siguientes:
 
@@ -84,7 +105,7 @@ sudo apt autoremove -y
 
 Con esto liberamos un poco el panel de aplicaciones y algo de espacio.
 
-## 5. Instalar programa retoques (gnome-tweak-tools)
+## 6. Instalar programa retoques (gnome-tweak-tools)
 
 ```bash
 sudo apt install gnome-tweak-tools
@@ -100,7 +121,7 @@ Hay bastantes ajustes interesantes que podemos llevar a cabo con esta herramient
 * Extensiones - Habilitar
 
 
-## 6. Instalar gnome-extensions
+## 7. Instalar gnome-extensions
 
 Ir a https://extensions.gnome.org mediante el navegador Firefox e instalar extensión en en el navegador. Hay muchas extensiones, pero no tantas útiles. Habilitar las siguientes extensiones:
 
@@ -172,6 +193,8 @@ Si queremos acceder nuevamente al menú de GRUB, podemos pulsar la tecla SHIFT d
 ## 11. Instalar sowftware básico
 
 ### 11.1. Habilitar soporte Flatpak o Snap
+
+
 
 ### 11.2. Aplicaciones varias.
 Virtualbox
