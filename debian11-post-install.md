@@ -71,7 +71,7 @@ NOTA: si no comentamos la segunda linea, nos pedida la huella y además el passw
 
 ## 5. Desinstalar juegos preinstalados
 
-Debian 11 viene por defecto con un montón de juegos (19) preinstalados. ¿Porque Debian (o mejor dicho Gnome) viene con tantos juegos preinstalados? Quien sabe, pero yo prefiero desinstalarlos todos y luego instalar aquel que vaya a utilizar. Los juegos que se van a desinstalar son los siguientes:
+Debian 11 viene por defecto con un montón de juegos (19) preinstalados. ¿Porque Gnome viene con tantos juegos preinstalados? Quien sabe, pero yo prefiero desinstalarlos todos y luego instalar aquel que vaya a utilizar. Los juegos que se van a desinstalar son los siguientes:
 
 * Gnome 2048 
 * Aisleriot (solitario) 
@@ -137,7 +137,7 @@ Ir a https://extensions.gnome.org mediante el navegador Firefox e instalar exten
 
 [Top 20 Gnome Extensions](https://itsfoss.com/best-gnome-extensions/)
 
-## 8. Ajustes 
+## 8. Ajustes básicos
 
 Dentro de ajustes Ir a los siguientes ajustes: 
 
@@ -190,9 +190,44 @@ GRUB_TIMEOUT=0
 
 Si queremos acceder nuevamente al menú de GRUB, podemos pulsar la tecla SHIFT durante el inicio.
 
-## 11. Instalar sowftware básico
+## 11. Instalar y configurar un sistema de backup
 
-### 11.1. Habilitar soporte Flatpak o Snap
+Si queremos que no perder nuestros datos o alguna de las configuraciones que hemos hecho, tendremos que instalar un programa de backup. Para Linux hay distintos paquetes que nos permiten automatizar dicha tarea. Entre los software gráficos más importantes tenemos [Timeshift](https://github.com/teejee2008/timeshift), uno de los más utilizados. Otros también populares son [Grsync](http://www.opbyte.it/grsync/) o [luckyBackup](https://luckybackup.sourceforge.net/). Casi todos están basados en la herramienta de línea de comandos [rsync](https://rsync.samba.org/), que es la herramienta que vamos a utilizar. Antes de instalar la herramienta, debemos preguntarnos ¿Que respaldar? ¿Cada cuando? ¿En que ubicación? ¿En que medios de almacenamiento?. Algunas consideraciones:
+
+* Podemos respaldar todo el sistema completo o solo los datos de usuario. Restaurar todo el sistema completo es más complicado que hacer una instalación desde 0 y normalmente solo necesitaremos hacer una copia de seguridad de nuestros datos personales (directorio /home) y alguna configuración del software (/etc/). 
+
+* Lo normal es hacer una copia diaria de todos nuestros datos. Alguna de estas copias la podemos guardar de forma periódica en un disco externo. 
+
+* En cuanto a medios de almacenamiento y numero de copias, en general no debemos volvernos locos. La mayor parte de la gente respalda sus datos mediante una copia en la nube. Para linux principalmente tenemos dos opciones para hacer un backup en la nube: [insync](https://www.insynchq.com/) (de pago) o [Rclone](https://rclone.org/) (gratuito). Sin embargo, aparte de guardar los datos en la nube, es recomendable tener nuestros datos en un disco duro aparte (disco USB, NAS, etc...).
+
+Crearemos el siguiente script rsync-backup.sh en un directorio dentro de nuestra carpeta personal.
+
+```bash
+    #!/bin/sh
+
+    # Simple rsync backup of Linux user data
+
+    # 1. setup 1st time
+    # mkdir ~/Documentos/rsync && cd !$
+    # nano rsync-backup.sh
+    # sudo mkdir /var/backups/rsync
+    # nano exclude-file.txt
+
+    # 2. add exclusions
+    # https://sites.google.com/site/rsync2u/home/rsync-tutorial/the-exclude-from-option
+    # https://github.com/rubo77/rsync-homedir-excludes/blob/master/rsync-homedir-excludes.txt
+    #.mozilla
+    #.cache
+    #.local
+
+    sudo rsync -av --exclude-from=/home/salva/Documentos/rsync/exclude-file.txt \
+    /home/salva /etc /var/backups/rsync/ --log-file=rsync.log
+```
+
+
+## 12. Instalar sowftware básico
+
+### 12.1. Habilitar soporte Flatpak o Snap
 
 ```bash
 sudo apt install flatpak
@@ -200,7 +235,7 @@ sudo apt install gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
-### 11.2. Aplicaciones varias.
+### 12.2. Aplicaciones varias.
 
 Virtualbox
 VLC
