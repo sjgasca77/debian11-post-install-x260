@@ -194,11 +194,11 @@ Si queremos acceder nuevamente al menú de GRUB, podemos pulsar la tecla SHIFT d
 
 Si queremos que no perder nuestros datos o alguna de las configuraciones que hemos hecho, tendremos que instalar un programa de backup. Para Linux hay distintos paquetes que nos permiten automatizar dicha tarea. Entre los software gráficos más importantes tenemos [Timeshift](https://github.com/teejee2008/timeshift), uno de los más utilizados. Otros también populares son [Grsync](http://www.opbyte.it/grsync/) o [luckyBackup](https://luckybackup.sourceforge.net/). Casi todos están basados en la herramienta de línea de comandos [rsync](https://rsync.samba.org/), que es la herramienta que vamos a utilizar. Antes de instalar la herramienta, debemos preguntarnos ¿Que respaldar? ¿Cada cuando? ¿En que ubicación? ¿En que medios de almacenamiento?. Algunas consideraciones:
 
-* Podemos respaldar todo el sistema completo o solo los datos de usuario. Restaurar todo el sistema completo es más complicado que hacer una instalación desde 0 y normalmente solo necesitaremos hacer una copia de seguridad de nuestros datos personales (directorio /home) y alguna configuración del software (/etc/). 
+* Podemos respaldar todo el sistema completo o solo los datos de usuario. Restaurar todo el sistema completo es más complicado que hacer una instalación desde cero y normalmente solo necesitaremos hacer una copia de seguridad de nuestros datos personales (directorio /home) y alguna configuración del software (/etc/). 
 
 * Lo normal es hacer una copia diaria de todos nuestros datos. Alguna de estas copias la podemos guardar de forma periódica en un disco externo. 
 
-* En cuanto a medios de almacenamiento y numero de copias, en general no debemos volvernos locos. La mayor parte de la gente respalda sus datos mediante una copia en la nube. Para linux principalmente tenemos dos opciones para hacer un backup en la nube: [insync](https://www.insynchq.com/) (de pago) o [Rclone](https://rclone.org/) (gratuito). Sin embargo, aparte de guardar los datos en la nube, es recomendable tener nuestros datos en un disco duro aparte (disco USB, NAS, etc...).
+* En cuanto a medios de almacenamiento y numero de copias, en general no debemos volvernos locos. La mayor parte de la gente respalda sus datos mediante una copia en la nube. Para linux principalmente tenemos dos opciones para hacer un backup en la nube: [insync](https://www.insynchq.com/) (de pago) o [Rclone](https://rclone.org/) (gratuito). Sin embargo, aparte de guardar los datos en la nube, es recomendable tener nuestros datos en un disco duro aparte (disco USB, NAS, etc...). Así que primero crearemos un script que respalde los datos de usuario y los guarde en /var/backups.
 
 Crearemos el siguiente script rsync-backup.sh en un directorio dentro de nuestra carpeta personal.
 
@@ -223,6 +223,7 @@ Crearemos el siguiente script rsync-backup.sh en un directorio dentro de nuestra
     sudo rsync -av --exclude-from=/home/salva/Documentos/rsync/exclude-file.txt \
     /home/salva /etc /var/backups/rsync/ --log-file=rsync.log
 ```
+
 
 
 ## 12. Instalar sowftware básico
