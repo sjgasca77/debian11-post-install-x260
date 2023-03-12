@@ -226,7 +226,15 @@ Crearemos el siguiente script rsync-backup.sh en un directorio dentro de nuestra
 
 
 
-## 12. Instalar sowftware básico
+## 12. Instalar software básico
+
+Para instalar software adicional en nuestro equipo disponemos de varias opciones en Debian.
+
+* Desde los repositorios de Debian (apt install o herramienta gráfica).
+* Desde un paquete Debian .deb (dpkg -i).
+* Mediante sistemas independientes como Snap, Flatpak o Appimage.
+
+Estos tres últimos tienen defensores y detractores cada uno, aquí tenemos una [comparativa](https://github.com/AppImage/AppImageKit/wiki/Similar-projects#comparison).
 
 ### 12.1. Habilitar soporte Flatpak o Snap
 
