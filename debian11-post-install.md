@@ -1,4 +1,4 @@
-# Lista de tareas de después de la instalación de Debian11 en PC (También Lenovo X260)
+# Tareas postinstalación para Debian 11 y 12 en PC (También Lenovo X260)
 
 Listado de tareas postinstalación para Debian 11 o 12. Tras este checklist, se podría realizar un backup del sistema por si alguna vez necesitamos instalar el sistema operativo rápidamente.
 Para este propósito se puede utilizar [Clonezilla Downloads](https://clonezilla.org/downloads.php)
