@@ -1,6 +1,7 @@
-# Lista de tareas de después de la instalación de Debian11 en X260
+# Lista de tareas de después de la instalación de Debian11 en PC (También Lenovo X260)
 
-Después de instalar Debian 11, version netinst [Debian 11 netinst](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso) desde [Obtener Debian](https://www.debian.org/distrib/index.es.html), éstas son las tareas que debemos hacer para tener un sistema funcional y preparado para instalar cualquier tipo de sofware.
+Listado de tareas postinstalación para Debian 11 o 12. Tras este checklist, se podría realizar un backup del sistema por si alguna vez necesitamos instalar el sistema operativo rápidamente.
+Para este propósito se puede utilizar [Clonezilla Downloads](https://clonezilla.org/downloads.php)
 
 ## 1. Agregar permisos administrador (sudo) a usuario normal.
 
@@ -252,7 +253,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 ### 12.2. Aplicaciones varias.
 
-|-----------|-------------|
+
 |Aplicacion |Como instalar|
 |-----------|-------------|
 |Virtualbox |
