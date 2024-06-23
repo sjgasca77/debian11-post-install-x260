@@ -24,52 +24,7 @@ Cierra sesión o reinicia para que los cambios sean efectivos
 sudo apt update && sudo apt upgrade
 ```
 
-## 3. Instalar firmware Wifi (sólo Lenovo X260)
-
-Los drivers para tarjeta Wifi no son de código abierto, por lo que Debian no la reconoce automáticamente. Hay que habilitar el repositorio non-free e instalarlos.
-
-Primero habilitamos el repositorio. Editamos el arcivo sources.list:
-
-```bash
-sudo nano /etc/apt/sources.list
-```
-
-descomentamos (o agregamos) las siguientes lineas:
-
-```bash
-deb http://security.debian.org/debian-security bullseye-security main non-free
-deb-src http://security.debian.org/debian-security bullseye-security main non-free
-```
-
-Por último instalamos el firmware para la tarjeta wifi:
-
-```bash
-sudo apt update
-sudo apt install firmware-iwlwifi
-```
-
-## 4. Habilitar lector huellas dactilares (sólo Lenovo X260)
-
-El soporte de drivers es muy bueno para el Lenovo X260 (ver [wiki Gentoo](https://wiki.gentoo.org/wiki/Lenovo_ThinkPad_X260)) pero para que Debian reconozca el lector de huellas tenemos que instalar la libreria [libprint](https://github.com/freedesktop/libfprint). Los paquetes para Debian por suerte ya estan disponibles y para ello solo debemos instalar los siguientes paquetes:
-
-```bash
-sudo apt install libfprint-2-2 fprintd libpam-fprintd 
-```
-* libfprint-2-2: libreria para el proyecto fprint 
-* fprintd Demonio para el lector de huellas dactilares. Este paquete nos permite ir a Configuración -> Usuarios y ver la opción "Inicio de sesión con huella".
-* libpam-fprintd Permite la autenticación mediante huella en el inicio de sesión.
-
-Después de agregar nuestra huella y reiniciar sesión, ya podremos iniciar sesión con la huella. Si queremos que el comando sudo también nos reconozca la huella, debemos añadir la siguiente linea al siguiente archivo de configuración PAM.
-
-```bash
-sudo nano /etc/pam.d/sudo
-
-auth required pam_fprintd.so
-#@include common-auth
-```
-NOTA: si no comentamos la segunda linea, nos pedida la huella y además el password de usuario.
-
-## 5. Desinstalar juegos preinstalados
+## 3. Desinstalar juegos preinstalados
 
 Debian 11 viene por defecto con un montón de juegos (19) preinstalados. ¿Porque Gnome viene con tantos juegos preinstalados? Quien sabe, pero yo prefiero desinstalarlos todos y luego instalar aquel que vaya a utilizar. Los juegos que se van a desinstalar son los siguientes:
 
@@ -105,10 +60,61 @@ sudo apt autoremove -y
 
 Con esto liberamos un poco el panel de aplicaciones y algo de espacio.
 
-## 6. Instalar programa retoques (gnome-tweak-tools)
+## 4. Instalar firmware Wifi (sólo Lenovo X260)
+
+Los drivers para tarjeta Wifi no son de código abierto, por lo que Debian no la reconoce automáticamente. Hay que habilitar el repositorio non-free e instalarlos.
+
+Primero habilitamos el repositorio. Editamos el arcivo sources.list:
 
 ```bash
+sudo nano /etc/apt/sources.list
+```
+
+descomentamos (o agregamos) las siguientes lineas:
+
+```bash
+deb http://security.debian.org/debian-security bullseye-security main non-free
+deb-src http://security.debian.org/debian-security bullseye-security main non-free
+```
+
+Por último instalamos el firmware para la tarjeta wifi:
+
+```bash
+sudo apt update
+sudo apt install firmware-iwlwifi
+```
+
+## 5. Habilitar lector huellas dactilares (sólo Lenovo X260)
+
+El soporte de drivers es muy bueno para el Lenovo X260 (ver [wiki Gentoo](https://wiki.gentoo.org/wiki/Lenovo_ThinkPad_X260)) pero para que Debian reconozca el lector de huellas tenemos que instalar la libreria [libprint](https://github.com/freedesktop/libfprint). Los paquetes para Debian por suerte ya estan disponibles y para ello solo debemos instalar los siguientes paquetes:
+
+```bash
+sudo apt install libfprint-2-2 fprintd libpam-fprintd 
+```
+* libfprint-2-2: libreria para el proyecto fprint 
+* fprintd Demonio para el lector de huellas dactilares. Este paquete nos permite ir a Configuración -> Usuarios y ver la opción "Inicio de sesión con huella".
+* libpam-fprintd Permite la autenticación mediante huella en el inicio de sesión.
+
+Después de agregar nuestra huella y reiniciar sesión, ya podremos iniciar sesión con la huella. Si queremos que el comando sudo también nos reconozca la huella, debemos añadir la siguiente linea al siguiente archivo de configuración PAM.
+
+```bash
+sudo nano /etc/pam.d/sudo
+
+auth required pam_fprintd.so
+#@include common-auth
+```
+NOTA: si no comentamos la segunda linea, nos pedida la huella y además el password de usuario.
+
+## 6. Instalar programa retoques (gnome-tweak-tools)
+
+Debian 11
+```bash
 sudo apt install gnome-tweak-tools
+```
+
+Debian 12.5
+```bash
+sudo apt install gnome-tweaks
 ```
 
 Hay bastantes ajustes interesantes que podemos llevar a cabo con esta herramienta, pero estos son algunos de los que tengo configurados:
@@ -246,8 +252,11 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 ### 12.2. Aplicaciones varias.
 
-Virtualbox
-VLC
-Telegram
-Spotify 
-Visual Studio
+|-----------|-------------|
+|Aplicacion |Como instalar|
+|-----------|-------------|
+|Virtualbox |
+|VLC        | sudo apt install vlc |
+|Telegram   |             |
+|Spotify    |             |
+|Visual Studio |         |
